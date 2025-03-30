@@ -26,7 +26,7 @@ public class Utils {
      * @param url a URL object
      * @return an InputStream object
      */
-    public static InputStream getInputStream(URL url){
+    public static InputStream getInputStream(URL url){ //getJSON calls this method
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -56,6 +56,8 @@ public class Utils {
      * @param url a URL object
      * @return a String containing JSON
      */
+
+    //json consists of key value pairs like a dictionary in python
     public static String getJson(URL url){
         return convertStreamToString(getInputStream(url));
     }
@@ -120,7 +122,7 @@ public class Utils {
      * @param  inputStream object
      * @return a Bitmap
      */
-    public static Bitmap convertStreamToBitmap (InputStream inputStream){
+    public static Bitmap convertStreamToBitmap (InputStream inputStream){ //reads image data and converts it into a bitmap
 
         return BitmapFactory.decodeStream(inputStream);
 
@@ -142,21 +144,21 @@ public class Utils {
      */
     public static URL buildURL(String comicNo){
         String scheme = "https";
-        final String authority = "xkcd.com";
+        final String authority = "xkcd.com"; //website we are taking data from
         final String back = "info.0.json";
         Uri.Builder builder = new Uri.Builder();
         URL url = null;
 
         Log.i(UTILS_TAG, "before append");
 
-        if( comicNo.equals("")){
+        if( comicNo.equals("")){ //no user input means api fetches from latest XKCD comic
             builder.scheme(scheme)
                     .authority(authority)
                     .appendPath(back);
         } else{
             builder.scheme(scheme)
                     .authority(authority)
-                    .appendPath(comicNo+"/"+back);
+                    .appendPath(comicNo+"/"+back); //appends user inputted comic number, example: https://xkcd.com/212/
         }
 
         Log.i(UTILS_TAG, "before build URL");

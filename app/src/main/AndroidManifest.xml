@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.norman_lee.comicapp">
+    package="com.example.norman_lee.comicapp"> <!--name of app when first created-->
+    <uses-permission android:name='android.permission.INTERNET'/> <!--permission to use internet-->
+    <uses-permission android:name = 'android.permission.ACCESS_NETWORK_STATE'/> <!--tells you if you have internet connection-->
 
     <application
         android:allowBackup="true"
@@ -10,14 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
+        <!--logo of app is icon-->
+
         <activity
-            android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:resizeableActivity="false"
+            android:configChanges = "orientation|keyboardHidden">
+            <!--portrait means you can't rotate your phone-->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" /> <!--intent is do some activity so when you open your phone the 1st thing you see is mainactivity-->
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
     </application>
 </manifest>

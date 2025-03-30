@@ -1,5 +1,5 @@
 package com.example.norman_lee.comicapp.utils;
-
+//this class enables safe sharing of data between background thread and main thread and this stores ur bitmaps
 public class Container<T> {
     T value;
 
